@@ -3,120 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Email Signature Generator</title>
+  <title>Human Interest Email Signature Generator</title>
   <link rel="stylesheet" href="email_signature_style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      padding: 2rem;
-    }
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-    input, select {
-      width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.25rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      background-color: #022A4D;
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    #signatureOutput {
-      margin-top: 2rem;
-      background-color: #fff;
-      padding: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-    }
-    .signature-preview {
-      padding: 1rem;
-      background: #fff;
-    }
-  </style>
 </head>
 <body>
   <div class="container">
     <h1>Email Signature Generator</h1>
-    <label for="name">Full Name:</label>
-    <input type="text" id="name" placeholder="First Last">
+    <form id="signatureForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required />
 
-    <label for="title">Job Title:</label>
-    <input type="text" id="title" placeholder="Job Title">
+      <label for="title">Title:</label>
+      <input type="text" id="title" required />
 
-    <label for="phone">Phone Number:</label>
-    <input type="text" id="phone" placeholder="(123) 456-7890">
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" required />
 
-    <label for="team">Team:</label>
-    <select id="team">
-      <option value="CS">CS</option>
-      <option value="Sales">Sales</option>
-    </select>
+      <label for="team">Team:</label>
+      <select id="team" required>
+        <option value="cs">Customer Support</option>
+        <option value="sales">Sales</option>
+      </select>
 
-    <button onclick="generateSignature()">Generate Signature</button>
+      <button type="submit">Generate Signature</button>
+    </form>
 
+    <h2>Generated Signature:</h2>
     <div id="signatureOutput"></div>
   </div>
 
   <script>
-    function generateSignature() {
-      const name = document.getElementById("name").value;
-      const title = document.getElementById("title").value;
-      const phone = document.getElementById("phone").value;
-      const team = document.getElementById("team").value;
+    const form = document.getElementById('signatureForm');
+    const output = document.getElementById('signatureOutput');
 
-      const logoUrl = "https://dl.dropboxusercontent.com/scl/fi/mi93m1ra3yjxw4oai5yte/Human-Interest-Email-Signature-Logo.png?rlkey=cijzjcjtdyr0tjakzmmoz23qz&st=a01at2tr";
-      const badgeUrl = "https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j";
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-      const customFooter = team === "CS"
-        ? `<span style="color:#6C7682; font-size:11px;">We're here for you. Reach out anytime — we're happy to help.</span>`
-        : `<span style="color:#6C7682; font-size:11px;">Human Interest | Investing for everyone</span>`;
+      const name = document.getElementById('name').value;
+      const title = document.getElementById('title').value;
+      const phone = document.getElementById('phone').value;
+      const team = document.getElementById('team').value;
 
-      const signatureHTML = `
-        <div style="font-family:Arial,sans-serif; font-size:14px; color:#022A4D; line-height:1.4;">
-          <div style="margin-bottom:10px;">
-            <strong>${name}</strong><br>
-            <span>${title}</span><br>
-            <span>${phone}</span>
-          </div>
-          <div style="display:flex; align-items:center;">
-            <img src="${logoUrl}" alt="Human Interest Logo" style="height:40px; margin-right:12px;">
-            <div style="width:1px; background-color:#CCD4D9; height:40px; margin-right:12px;"></div>
-            <img src="${badgeUrl}" alt="CXG Badge" style="height:40px;">
-          </div>
-          <div style="margin-top:10px;">
-            ${customFooter}<br>
-            <a href="https://humaninterest.com" style="color:#14B5AB; font-size:11px; text-decoration:underline;">humaninterest.com</a>
-          </div>
-        </div>
+      let footerText = '';
+      if (team === 'cs') {
+        footerText = 'We’re pleased to announce the <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color:#14B5AB; text-decoration:underline;">industry’s leading customer experience guarantee</a>';
+      } else {
+        footerText = 'Ask me about the <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color:#14B5AB; text-decoration:underline;">customer experience guarantee</a> of its kind.';
+      }
+
+      output.innerHTML = `
+        <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; color: #022A4D;">
+          <tr>
+            <td style="padding-right: 10px;">
+              <img src="https://dl.dropboxusercontent.com/scl/fi/mi93m1ra3yjxw4oai5yte/Human-Interest-Email-Signature-Logo.png?rlkey=cijzjcjtdyr0tjakzmmoz23qz&st=a01at2tr" style="height: 50px;" alt="Human Interest Logo" />
+            </td>
+            <td style="border-left: 1px solid #CCD4D9; padding-left: 10px;">
+              <div style="margin-bottom: 5px; font-weight: bold; font-size: 16px;">${name}</div>
+              <div style="margin-bottom: 5px; font-size: 14px;">${title}</div>
+              <div style="margin-bottom: 5px; font-size: 14px;">${phone}</div>
+              <img src="https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j" style="height: 24px; margin-top: 5px;" alt="CXG Badge" />
+              <div style="margin-top: 8px; font-size: 12px; color: #6C7682;">${footerText}</div>
+            </td>
+          </tr>
+        </table>
       `;
-
-      document.getElementById("signatureOutput").innerHTML = `
-        <h2>Preview:</h2>
-        <div class="signature-preview">${signatureHTML}</div>
-        <h3>HTML Code:</h3>
-        <textarea rows="10" style="width:100%;">${signatureHTML.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</textarea>
-      `;
-    }
+    });
   </script>
 </body>
 </html>
