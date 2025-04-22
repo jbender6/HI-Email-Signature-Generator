@@ -41,9 +41,10 @@
         font-family: Arial, sans-serif;
         font-size: 14px;
         line-height: 1.4;
+        width: 100%;
       }
       .signature-table td {
-        vertical-align: top;
+        vertical-align: middle;
         padding-right: 10px;
       }
       .divider {
@@ -54,20 +55,16 @@
       .logo {
         width: 30%;
         height: auto;
-        vertical-align: middle; /* Vertically centers the logo */
       }
       .badge {
         width: 30%;
         height: auto;
       }
-      .instructions {
-        font-size: 13px;
-        color: #6C7682;
-        margin-top: 16px;
-      }
       .footer-text {
         font-size: 7pt;
         color: #6C7682;
+        text-align: center;
+        padding-top: 8px;
       }
       .footer-link {
         color: #14B5AB;
@@ -144,8 +141,10 @@
     <td><img class="badge" src="${badgeUrl}" alt="CXG Badge"></td>
   </tr>
   <tr>
-    <td colspan="3" class="footer-text" style="text-align:center;">
-      <a href="${footerLink}" class="footer-link">${footerText}</a>
+    <td colspan="3" class="footer-text">
+      <span> 
+        <a href="${footerLink}" class="footer-link">${footerText}</a>
+      </span>
     </td>
   </tr>
 </table>`;
