@@ -52,10 +52,14 @@
         margin: 0 10px;
       }
       .logo {
-        max-height: 30px; /* Reduced size of logo */
+        width: 60%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
       }
       .badge {
-        max-height: 50px; /* Increased size of badge */
+        width: 150%;
+        height: auto;
       }
       .instructions {
         font-size: 13px;
@@ -63,12 +67,8 @@
         margin-top: 16px;
       }
       .footer-text {
-        font-size: 14px;
+        font-size: 7pt;
         color: #6c7682;
-      }
-      .footer-text a {
-        color: #14b5ab;
-        text-decoration: underline;
       }
     </style>
   </head>
@@ -112,31 +112,37 @@
         const phone = document.getElementById("phoneNumber").value;
         const team = document.getElementById("team").value;
 
-        const badgeUrl = "https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j";
-        const logoUrl = "https://dl.dropboxusercontent.com/scl/fi/mi93m1ra3yjxw4oai5yte/Human-Interest-Email-Signature-Logo.png?rlkey=cijzjcjtdyr0tjakzmmoz23qz&st=a01at2tr";
+        const badgeUrl =
+          team === "sales"
+            ? "https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j"
+            : "https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j";
+
+        const logoUrl =
+          "https://dl.dropboxusercontent.com/scl/fi/mi93m1ra3yjxw4oai5yte/Human-Interest-Email-Signature-Logo.png?rlkey=cijzjcjtdyr0tjakzmmoz23qz&st=a01at2tr";
+
+        const footerText =
+          team === "sales"
+            ? 'Ask me about the <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color:#14B5AB; text-decoration: underline;">industry’s first customer experience guarantee</a> of its kind.'
+            : 'We’re pleased to announce the <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color:#14B5AB; text-decoration: underline;">industry’s leading customer experience guarantee</a>';
 
         const signatureHTML = `
-          <table class="signature-table">
-            <tr>
-              <td colspan="3">
-                <strong style="color:#022A4D;">${name}</strong><br>
-                <span style="color:#022A4D;">${title}</span><br>
-                <span style="color:#022A4D;">${phone}</span>
-              </td>
-            </tr>
-            <tr>
-              <td><img class="logo" src="${logoUrl}" alt="Human Interest Logo"></td>
-              <td class="divider"></td>
-              <td><img class="badge" src="${badgeUrl}" alt="CXG Badge"></td>
-            </tr>
-          </table>
-          <div class="footer-text" style="margin-top: 16px;">
-            ${
-              team === "sales"
-                ? `Ask me about the industry’s first customer experience guarantee of its kind. <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/">customer experience guarantee</a>`
-                : `We’re pleased to announce the industry’s leading customer experience guarantee. <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/">industry’s leading customer experience guarantee</a>`
-            }
-          </div>`;
+<table class="signature-table">
+  <tr>
+    <td colspan="3">
+      <strong style="font-size: 12pt; color:#022A4D;">${name}</strong><br>
+      <span style="font-size: 10pt; color:#022A4D;">${title}</span><br>
+      <span style="font-size: 10pt; color:#022A4D;">${phone}</span>
+    </td>
+  </tr>
+  <tr>
+    <td><img class="logo" src="${logoUrl}" alt="Human Interest Logo"></td>
+    <td class="divider"></td>
+    <td>
+      <img class="badge" src="${badgeUrl}" alt="CXG Badge">
+    </td>
+  </tr>
+</table>
+<p class="footer-text">${footerText}</p>`;
 
         document.getElementById("signaturePreview").innerHTML = signatureHTML;
         document.getElementById("signatureCode").value = signatureHTML;
