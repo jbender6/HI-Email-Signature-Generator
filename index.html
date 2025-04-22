@@ -1,97 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Signature Generator</title>
-    <link rel="stylesheet" href="email_signature_style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .header {
-            display: flex;
-            align-items: center;
-        }
-        .header img {
-            max-width: 120px;
-            height: auto;
-        }
-        .header h1, .header p {
-            margin-left: 20px;
-            color: #022A4D;
-        }
-        .divider {
-            width: 100%;
-            height: 1px;
-            background-color: #CCD4D9;
-            margin: 10px 0;
-        }
-        .footer {
-            font-size: 12px;
-            color: #6C7682;
-        }
-        .footer a {
-            color: #14B5AB;
-            text-decoration: none;
-        }
-        .badge {
-            width: 60px;
-            height: auto;
-            margin-left: 20px;
-        }
-        .team-signature {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .team-signature p {
-            margin: 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Signature Generator</title>
 </head>
-<body>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f2f2f2;">
 
-<div class="container">
-    <div class="header">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/mi93m1ra3yjxw4oai5yte/Human-Interest-Email-Signature-Logo.png?rlkey=cijzjcjtdyr0tjakzmmoz23qz&st=a01at2tr" alt="Human Interest Logo">
-        <div>
-            <h1>First Last</h1>
-            <p>Job Title</p>
-            <p>Phone Number</p>
-        </div>
+  <div style="width: 100%; max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border: 1px solid #dcdcdc; border-radius: 10px;">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+      <img src="https://dl.dropboxusercontent.com/scl/fi/mi93m1ra3yjxw4oai5yte/Human-Interest-Email-Signature-Logo.png?rlkey=cijzjcjtdyr0tjakzmmoz23qz&st=a01at2tr" alt="Human Interest Logo" style="height: 50px; max-width: 100px;">
+      <img src="https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j" alt="CXG Badge" style="height: 50px; max-width: 100px;">
     </div>
 
-    <div class="divider"></div>
-
-    <div class="team-signature">
-        <div class="team-info">
-            <p>Customer Support</p>
-            <p>We’re pleased to announce the <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" target="_blank">industry’s leading customer experience guarantee</a>.</p>
-        </div>
-        <img class="badge" src="https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j" alt="CXG Badge">
+    <div style="margin-bottom: 20px;">
+      <h2 style="color: #022A4D; margin: 0; font-size: 24px;">First Last</h2>
+      <p style="color: #6C7682; margin: 5px 0;">Job Title</p>
+      <p style="color: #6C7682; margin: 5px 0;">Phone: (555) 123-4567</p>
+      <p style="color: #14B5AB; margin: 5px 0; font-size: 16px;">Email: <a href="mailto:email@example.com" style="color: #14B5AB;">email@example.com</a></p>
     </div>
 
-    <div class="team-signature">
-        <div class="team-info">
-            <p>Sales</p>
-            <p>Ask me about the <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" target="_blank">industry’s first customer experience guarantee of its kind</a>.</p>
-        </div>
-        <img class="badge" src="https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j" alt="CXG Badge">
+    <div style="border-top: 1px solid #CCD4D9; margin-top: 20px; padding-top: 10px;">
+      <p style="color: #6C7682; font-size: 14px; margin: 0;">
+        We’re pleased to announce the industry’s leading 
+        <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color: #14B5AB; text-decoration: underline;">customer experience guarantee</a>.
+      </p>
     </div>
-</div>
+
+  </div>
 
 </body>
 </html>
