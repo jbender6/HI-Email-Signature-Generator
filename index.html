@@ -8,7 +8,7 @@
         font-family: Arial, sans-serif;
         background-color: #f7f9fa;
         padding: 20px;
-        color: #022A4D;
+        color: #022a4d;
         line-height: 1.5;
       }
       h1 {
@@ -47,7 +47,7 @@
         padding-right: 10px;
       }
       .divider {
-        border-left: 1px solid #CCD4D9;
+        border-left: 1px solid #ccd4d9;
         height: 60px;
         margin: 0 10px;
       }
@@ -59,7 +59,7 @@
       }
       .instructions {
         font-size: 13px;
-        color: #6C7682;
+        color: #6c7682;
         margin-top: 16px;
       }
     </style>
@@ -78,7 +78,7 @@
 
     <label for="team">Team</label>
     <select id="team">
-      <option value="cxg">Customer Experience Group</option>
+      <option value="cs">Customer Support</option>
       <option value="sales">Sales</option>
     </select>
 
@@ -104,30 +104,30 @@
         const phone = document.getElementById("phoneNumber").value;
         const team = document.getElementById("team").value;
 
-        const badgeUrl = team === "sales"
-          ? ""
-          : "https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j";
-
+        const badgeUrl = "https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j";
         const logoUrl = "https://dl.dropboxusercontent.com/scl/fi/mi93m1ra3yjxw4oai5yte/Human-Interest-Email-Signature-Logo.png?rlkey=cijzjcjtdyr0tjakzmmoz23qz&st=a01at2tr";
 
         const signatureHTML = `
-<table class="signature-table">
-  <tr>
-    <td><img class="logo" src="${logoUrl}" alt="Human Interest Logo"></td>
-    <td class="divider"></td>
-    <td>
-      <strong style="color:#022A4D;">${name}</strong><br>
-      <span style="color:#022A4D;">${title}</span><br>
-      <span style="color:#022A4D;">${phone}</span><br>
-      <a href="https://humaninterest.com" style="color:#14B5AB; text-decoration: underline;">humaninterest.com</a>
-    </td>
-    ${
-      badgeUrl
-        ? `<td><img class="badge" src="${badgeUrl}" alt="CXG Badge"></td>`
-        : ""
-    }
-  </tr>
-</table>`;
+          <table class="signature-table">
+            <tr>
+              <td>
+                <strong style="color:#022A4D;">${name}</strong><br>
+                <span style="color:#022A4D;">${title}</span><br>
+                <span style="color:#022A4D;">${phone}</span><br>
+                <a href="https://humaninterest.com" style="color:#14B5AB; text-decoration: underline;">humaninterest.com</a>
+              </td>
+              <td class="divider"></td>
+              <td><img class="logo" src="${logoUrl}" alt="Human Interest Logo"></td>
+              <td><img class="badge" src="${badgeUrl}" alt="CXG Badge"></td>
+            </tr>
+          </table>
+          <div style="margin-top: 16px;">
+            ${
+              team === "sales"
+                ? `Ask me about the industry’s first customer experience guarantee of its kind. <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color:#14B5AB; text-decoration: underline;">customer experience guarantee</a>`
+                : `We’re pleased to announce the industry’s leading customer experience guarantee. <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color:#14B5AB; text-decoration: underline;">industry’s leading customer experience guarantee</a>`
+            }
+          </div>`;
 
         document.getElementById("signaturePreview").innerHTML = signatureHTML;
         document.getElementById("signatureCode").value = signatureHTML;
