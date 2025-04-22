@@ -52,15 +52,23 @@
         margin: 0 10px;
       }
       .logo {
-        max-height: 40px;
+        max-height: 30px; /* Reduced size of logo */
       }
       .badge {
-        max-height: 40px;
+        max-height: 50px; /* Increased size of badge */
       }
       .instructions {
         font-size: 13px;
         color: #6c7682;
         margin-top: 16px;
+      }
+      .footer-text {
+        font-size: 14px;
+        color: #6c7682;
+      }
+      .footer-text a {
+        color: #14b5ab;
+        text-decoration: underline;
       }
     </style>
   </head>
@@ -110,22 +118,23 @@
         const signatureHTML = `
           <table class="signature-table">
             <tr>
-              <td>
+              <td colspan="3">
                 <strong style="color:#022A4D;">${name}</strong><br>
                 <span style="color:#022A4D;">${title}</span><br>
-                <span style="color:#022A4D;">${phone}</span><br>
-                <a href="https://humaninterest.com" style="color:#14B5AB; text-decoration: underline;">humaninterest.com</a>
+                <span style="color:#022A4D;">${phone}</span>
               </td>
-              <td class="divider"></td>
+            </tr>
+            <tr>
               <td><img class="logo" src="${logoUrl}" alt="Human Interest Logo"></td>
+              <td class="divider"></td>
               <td><img class="badge" src="${badgeUrl}" alt="CXG Badge"></td>
             </tr>
           </table>
-          <div style="margin-top: 16px;">
+          <div class="footer-text" style="margin-top: 16px;">
             ${
               team === "sales"
-                ? `Ask me about the industry’s first customer experience guarantee of its kind. <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color:#14B5AB; text-decoration: underline;">customer experience guarantee</a>`
-                : `We’re pleased to announce the industry’s leading customer experience guarantee. <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color:#14B5AB; text-decoration: underline;">industry’s leading customer experience guarantee</a>`
+                ? `Ask me about the industry’s first customer experience guarantee of its kind. <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/">customer experience guarantee</a>`
+                : `We’re pleased to announce the industry’s leading customer experience guarantee. <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/">industry’s leading customer experience guarantee</a>`
             }
           </div>`;
 
