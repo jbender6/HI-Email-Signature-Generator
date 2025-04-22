@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Human Interest Email Signature Generator</title>
   <link rel="stylesheet" href="email_signature_style.css">
 </head>
@@ -10,25 +10,24 @@
   <div class="container">
     <h1>Email Signature Generator</h1>
     <form id="signatureForm">
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" required />
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
 
       <label for="title">Title:</label>
-      <input type="text" id="title" required />
+      <input type="text" id="title" name="title" required>
 
       <label for="phone">Phone Number:</label>
-      <input type="text" id="phone" required />
+      <input type="text" id="phone" name="phone" required>
 
       <label for="team">Team:</label>
-      <select id="team" required>
-        <option value="cs">Customer Support</option>
+      <select id="team" name="team" required>
+        <option value="cs">CS</option>
         <option value="sales">Sales</option>
       </select>
 
       <button type="submit">Generate Signature</button>
     </form>
 
-    <h2>Generated Signature:</h2>
     <div id="signatureOutput"></div>
   </div>
 
@@ -36,8 +35,11 @@
     const form = document.getElementById('signatureForm');
     const output = document.getElementById('signatureOutput');
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+    const logoURL = 'https://dl.dropboxusercontent.com/scl/fi/mi93m1ra3yjxw4oai5yte/Human-Interest-Email-Signature-Logo.png?rlkey=cijzjcjtdyr0tjakzmmoz23qz&st=a01at2tr';
+    const badgeURL = 'https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j';
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
 
       const name = document.getElementById('name').value;
       const title = document.getElementById('title').value;
@@ -45,28 +47,33 @@
       const team = document.getElementById('team').value;
 
       let footerText = '';
+
       if (team === 'cs') {
-        footerText = 'We’re pleased to announce the <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color:#14B5AB; text-decoration:underline;">industry’s leading customer experience guarantee</a>';
-      } else {
-        footerText = 'Ask me about the <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color:#14B5AB; text-decoration:underline;">customer experience guarantee</a> of its kind.';
+        footerText = `We’re pleased to announce the <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color: #14B5AB; text-decoration: underline;">industry’s leading customer experience guarantee</a>`;
+      } else if (team === 'sales') {
+        footerText = `Ask me about the <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color: #14B5AB; text-decoration: underline;">customer experience guarantee</a> of its kind.`;
       }
 
-      output.innerHTML = `
-        <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; color: #022A4D;">
+      const html = `
+        <table cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; color: #022A4D;">
           <tr>
-            <td style="padding-right: 10px;">
-              <img src="https://dl.dropboxusercontent.com/scl/fi/mi93m1ra3yjxw4oai5yte/Human-Interest-Email-Signature-Logo.png?rlkey=cijzjcjtdyr0tjakzmmoz23qz&st=a01at2tr" style="height: 50px;" alt="Human Interest Logo" />
+            <td style="padding-right: 16px;">
+              <img src="${logoURL}" alt="Logo" style="width: 120px; height: auto;">
             </td>
-            <td style="border-left: 1px solid #CCD4D9; padding-left: 10px;">
-              <div style="margin-bottom: 5px; font-weight: bold; font-size: 16px;">${name}</div>
-              <div style="margin-bottom: 5px; font-size: 14px;">${title}</div>
-              <div style="margin-bottom: 5px; font-size: 14px;">${phone}</div>
-              <img src="https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j" style="height: 24px; margin-top: 5px;" alt="CXG Badge" />
-              <div style="margin-top: 8px; font-size: 12px; color: #6C7682;">${footerText}</div>
+            <td style="border-left: 1px solid #CCD4D9; padding-left: 16px;">
+              <div style="margin-bottom: 4px; font-weight: bold; font-size: 16px;">${name}</div>
+              <div style="margin-bottom: 4px; font-size: 14px;">${title}</div>
+              <div style="margin-bottom: 8px; font-size: 14px;">${phone}</div>
+              <img src="${badgeURL}" alt="CXG Badge" style="width: 32px; height: auto; margin-bottom: 8px;">
+              <div style="font-size: 12px; color: #6C7682;">
+                ${footerText}
+              </div>
             </td>
           </tr>
         </table>
       `;
+
+      output.innerHTML = html;
     });
   </script>
 </body>
