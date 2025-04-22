@@ -8,7 +8,7 @@
         font-family: Arial, sans-serif;
         background-color: #f7f9fa;
         padding: 20px;
-        color: #022a4d;
+        color: #022A4D;
         line-height: 1.5;
       }
       h1 {
@@ -47,28 +47,31 @@
         padding-right: 10px;
       }
       .divider {
-        border-left: 1px solid #ccd4d9;
+        border-left: 1px solid #CCD4D9;
         height: 60px;
         margin: 0 10px;
       }
       .logo {
-        width: 60%;  /* Reduced to 60% */
+        width: 30%;
         height: auto;
-        display: block;
-        margin: 0 auto;
+        vertical-align: middle; /* Vertically centers the logo */
       }
       .badge {
-        width: 150%;  /* Increased to 150% */
+        width: 30%;
         height: auto;
       }
       .instructions {
         font-size: 13px;
-        color: #6c7682;
+        color: #6C7682;
         margin-top: 16px;
       }
       .footer-text {
         font-size: 7pt;
-        color: #6c7682;
+        color: #6C7682;
+      }
+      .footer-link {
+        color: #14B5AB;
+        text-decoration: underline;
       }
     </style>
   </head>
@@ -86,8 +89,8 @@
 
     <label for="team">Team</label>
     <select id="team">
-      <option value="cs">Customer Support</option>
       <option value="sales">Sales</option>
+      <option value="cs">Customer Support</option>
     </select>
 
     <button onclick="generateSignature()">Generate Signature</button>
@@ -112,37 +115,40 @@
         const phone = document.getElementById("phoneNumber").value;
         const team = document.getElementById("team").value;
 
-        const badgeUrl =
-          team === "sales"
-            ? "https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j"
-            : "https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j";
+        const badgeUrl = team === "sales"
+          ? "https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j"
+          : "https://dl.dropboxusercontent.com/scl/fi/vzsgxgg5fz99oy7i3apea/Human-Interest-Email-Signature-CXG-Badge.png?rlkey=g55igd7b9enx84gdha4jwh44w&st=vhd8dh9j";
 
-        const logoUrl =
-          "https://dl.dropboxusercontent.com/scl/fi/mi93m1ra3yjxw4oai5yte/Human-Interest-Email-Signature-Logo.png?rlkey=cijzjcjtdyr0tjakzmmoz23qz&st=a01at2tr";
+        const logoUrl = "https://dl.dropboxusercontent.com/scl/fi/mi93m1ra3yjxw4oai5yte/Human-Interest-Email-Signature-Logo.png?rlkey=cijzjcjtdyr0tjakzmmoz23qz&st=a01at2tr";
 
         const footerText =
           team === "sales"
-            ? 'Ask me about the <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color:#14B5AB; text-decoration: underline;">industry’s first customer experience guarantee</a> of its kind.'
-            : 'We’re pleased to announce the <a href="https://humaninterest.com/pressroom/articles/customer-experience-guarantee/" style="color:#14B5AB; text-decoration: underline;">industry’s leading customer experience guarantee</a>';
+            ? "Ask me about the industry’s first customer experience guarantee of its kind."
+            : "We’re pleased to announce the industry’s leading customer experience guarantee";
+
+        const footerLink =
+          "https://humaninterest.com/pressroom/articles/customer-experience-guarantee/";
 
         const signatureHTML = `
 <table class="signature-table">
   <tr>
-    <td colspan="3">
-      <strong style="font-size: 12pt; color:#022A4D;">${name}</strong><br>
-      <span style="font-size: 10pt; color:#022A4D;">${title}</span><br>
-      <span style="font-size: 10pt; color:#022A4D;">${phone}</span>
+    <td colspan="3" style="text-align:center;">
+      <strong style="font-size:12pt; color:#022A4D;">${name}</strong><br>
+      <span style="font-size:10pt; color:#022A4D;">${title}</span><br>
+      <span style="font-size:10pt; color:#022A4D;">${phone}</span>
     </td>
   </tr>
   <tr>
     <td><img class="logo" src="${logoUrl}" alt="Human Interest Logo"></td>
     <td class="divider"></td>
-    <td>
-      <img class="badge" src="${badgeUrl}" alt="CXG Badge">
+    <td><img class="badge" src="${badgeUrl}" alt="CXG Badge"></td>
+  </tr>
+  <tr>
+    <td colspan="3" class="footer-text" style="text-align:center;">
+      <a href="${footerLink}" class="footer-link">${footerText}</a>
     </td>
   </tr>
-</table>
-<p class="footer-text">${footerText}</p>`;
+</table>`;
 
         document.getElementById("signaturePreview").innerHTML = signatureHTML;
         document.getElementById("signatureCode").value = signatureHTML;
